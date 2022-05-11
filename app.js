@@ -1,7 +1,6 @@
 const express = require("express");
 const cron = require("node-cron");
 const axios = require("axios");
-const morgan = require('morgan')
 
 const uploadArticles = require("./models/articles.model");
 const { connectMongo } = require("./services/mongo");
@@ -12,9 +11,6 @@ require("dotenv").config();
 connectMongo();
 
 const app = express();
-
-app.use(express.json())
-app.use(morgan('tiny'))
 
 cron.schedule("*/30 * * * *", () => {
   axios
