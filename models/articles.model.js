@@ -26,7 +26,7 @@ function filter(data, lastPostID) {
 
   if (lastPosition != -1){
     data = data.slice(0,lastPosition)
-  } else {data == null}
+  } 
   
   return data
 }
