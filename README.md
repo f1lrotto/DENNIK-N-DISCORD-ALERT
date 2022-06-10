@@ -5,6 +5,8 @@ This is a Node.js application that connects to a discord server via webhooks to 
 ### Functionality
 Every 30 minutes, this application sends a `GET` request to [DennikN-scraper](https://github.com/f1lrotto/DennikN-scraper), to obtain the latest news posted. It checks the database to find out if there are any duplicate news with those that were served already. If there are duplicates, it trims them and sends them to the discord server via a webhook. Then it saves the new articles to a MongoDB database.
 
+## Example
+![example](/example.png)
 ### Technologies used
 This application is running **Node.js** with **express**.
 
