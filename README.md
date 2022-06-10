@@ -15,7 +15,7 @@ Sending messages via webhooks is handled by **discord.js**
 This application stores its data on a **mongoDB** database that is hosted on Atlas. To access the mongoDB database, **mongoose** is used
 ## Running the project
 
-### Install the dependancies
+### Install the dependencies
 ```
 npm install
 ``` 
