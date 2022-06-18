@@ -11,7 +11,7 @@ function makeDiscordMessage(newArticles) {
   newArticleArray.push(message)
   
   newArticles.forEach((article) => {
-    const time = moment(article.postTime).format("Do MMM HH:mm");
+    const time = moment(article.postTime).add(2, 'hours').format("Do MMM HH:mm");
     message = `At ${time}, ${article.headline}\n<${article.postLink}>\n\n`;
     newArticleArray.push([message])
   });
