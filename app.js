@@ -13,6 +13,7 @@ connectMongo();
 const app = express();
 
 cron.schedule("*/30 * * * *", () => {
+  console.log("Running Cron Job");
   axios
     .get("https://dennik-n-scraper.herokuapp.com/posts")
     .then(async (res) => {
