@@ -26,8 +26,15 @@ cron.schedule("*/30 * * * *", () => {
 });
 
 // keep the server from idleing
-cron.schedule("*/2 * * * *", () => {
-  axios.get("https://discord-news-f1lrotto.herokuapp.com/keep-alive");
+cron.schedule("*/5 * * * *", () => {
+  axios
+    .get("https://discord-news-f1lrotto.herokuapp.com/keep-alive")
+    .then(() => {
+      console.log("keep alive");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 });
 
 app.get("/keep-alive", (req, res) => {
