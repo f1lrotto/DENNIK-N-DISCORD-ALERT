@@ -7,6 +7,10 @@ async function uploadArticles(data) {
     data.forEach((entry) => {
       saveArticle(entry);
     });
+  } else {
+    data.forEach((entry) => {
+      saveArticle(entry);
+    });
   }
   return data;
 }
@@ -16,6 +20,7 @@ async function getArticle() {
 }
 
 function filter(data, lastPostID) {
+  console.log("filter", lastPostID);
   count = 0;
   lastPosition = -1;
 
@@ -36,7 +41,7 @@ function filter(data, lastPostID) {
 async function saveArticle(newEntry) {
   try {
     await articlesDatabase.create(newEntry);
-    //console.log("save");
+    console.log("save", newEntry.postID);
   } catch {
     console.error(`Couldn't save article`);
   }
