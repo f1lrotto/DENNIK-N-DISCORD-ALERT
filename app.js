@@ -25,12 +25,14 @@ cron.schedule("*/30 * * * *", () => {
     });
 });
 
-
 // keep the server from idleing
 cron.schedule("*/2 * * * *", () => {
-  console.log('running cron job to keep server alive and heroku not idle')
-} );
+  axios.get("https://discord-news-f1lrotto.herokuapp.com/");
+});
 
+app.get("/keep-alive", (req, res) => {
+  res.status(200).send("OK");
+});
 
 PORT = process.env.PORT || 8000;
 
