@@ -25,6 +25,13 @@ cron.schedule("*/30 * * * *", () => {
     });
 });
 
+
+// keep the server from idleing
+cron.schedule("*/2 * * * *", () => {
+  console.log('running cron job to keep server alive and heroku not idle')
+} );
+
+
 PORT = process.env.PORT || 8000;
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`));
