@@ -3,7 +3,10 @@ const articlesDatabase = require("./articles.mongo");
 async function uploadArticles(data) {
   lastArticle = await getArticle();
   if (lastArticle != null) {
-    data = filter(data, lastArticle.postID);
+    data = filter(data, lastArticle[0].postID);
+    if (data.length == 35) {
+      data = filter(data, lastArticle[1].postID);
+    }
     data.forEach((entry) => {
       saveArticle(entry);
     });
@@ -16,11 +19,10 @@ async function uploadArticles(data) {
 }
 
 async function getArticle() {
-  return await articlesDatabase.findOne().sort({ postTime: -1 });
+  return await articlesDatabase.find().sort({ postTime: -1 }).limit(2);
 }
 
 function filter(data, lastPostID) {
-  console.log("filter", lastPostID);
   count = 0;
   lastPosition = -1;
 
@@ -41,7 +43,6 @@ function filter(data, lastPostID) {
 async function saveArticle(newEntry) {
   try {
     await articlesDatabase.create(newEntry);
-    console.log("save", newEntry.postID);
   } catch {
     console.error(`Couldn't save article`);
   }
